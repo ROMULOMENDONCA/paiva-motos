@@ -110,6 +110,35 @@
       font-size: 14px;
       text-align: center;
     }
+
+    /* --- NOVA SEÇÃO DE MARCAS --- */
+    .marcas {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid #1f3b66;
+      border-bottom: 1px solid #1f3b66;
+      margin: 30px 0;
+    }
+    .marcas h2 {
+      color: var(--text);
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    .marcas .logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .marcas .logos img {
+      height: 60px;
+      filter: brightness(0) invert(1); /* deixa branco */
+      transition: transform 0.3s;
+    }
+    .marcas .logos img:hover {
+      transform: scale(1.1);
+    }
+
     footer {
       padding: 20px 20px 30px;
       text-align: center;
@@ -148,6 +177,21 @@
       <button class="thumb" data-slide="2"><img src="img/moto3.jpg" alt="Miniatura 3"></button>
     </div>
   </main>
+
+  <!-- NOVA SEÇÃO DE MARCAS -->
+  <section class="marcas">
+    <h2>Trabalhamos com as principais marcas</h2>
+    <div class="logos">
+      <img src="img/honda.png" alt="Honda">
+      <img src="img/yamaha.png" alt="Yamaha">
+      <img src="img/suzuki.png" alt="Suzuki">
+      <img src="img/bmw.png" alt="BMW">
+      <img src="img/harley.png" alt="Harley-Davidson">
+      <img src="img/bajaj.png" alt="Bajaj">
+      <img src="img/shineray.png" alt="Shineray">
+      <img src="img/ducati.png" alt="Ducati">
+    </div>
+  </section>
 
   <section class="cta">
     <a class="btn-whatsapp" 
