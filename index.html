@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paiva Motos — Apresentação</title>
+  <meta name="description" content="Loja de motos — Paiva Motos. Destaque, confiança e atendimento direto no WhatsApp.">
+  <style>
+    :root {
+      --bg: #0a1a2f;
+      --card: #112544;
+      --text: #ffffff;
+      --accent: #007bff;
+      --muted: #a6c4e0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header {
+      padding: 24px 20px 8px;
+      text-align: center;
+    }
+    header img {
+      max-width: 240px;
+      height: auto;
+    }
+    .tagline {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .hero {
+      margin: 6px auto 20px;
+      padding: 0 20px;
+    }
+    .gallery {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      min-height: 240px;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 600ms ease;
+      display: grid;
+      place-items: center;
+      background: #0b0d10;
+    }
+    .slide img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .slide.active { opacity: 1; }
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid #1f3b66;
+      cursor: pointer;
+    }
+    .thumb img {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+      display: block;
+    }
+    .cta {
+      margin: 12px auto 24px;
+      padding: 0 20px;
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+      box-shadow: 0 8px 22px rgba(0, 123, 255, 0.35);
+    }
+    .btn-whatsapp:hover { transform: translateY(-1px); }
+    .btn-whatsapp:active { transform: translateY(0); }
+    .info {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+    footer {
+      padding: 20px 20px 30px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid #1f3b66;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="img/logo-paiva.png" alt="Logomarca Paiva Motos">
+    <div class="tagline">
+      Acelere com quem entende de motos. Paiva Motos — destaque, confiança e atendimento direto no WhatsApp.
+    </div>
+  </header>
+
+  <main class="hero" aria-label="Galeria de destaques">
+    <section class="gallery" id="gallery">
+      <figure class="slide active">
+        <img src="img/moto1.jpg" alt="Moto destaque 1">
+      </figure>
+      <figure class="slide">
+        <img src="img/moto2.jpg" alt="Moto destaque 2">
+      </figure>
+      <figure class="slide">
+        <img src="img/moto3.jpg" alt="Moto destaque 3">
+      </figure>
+    </section>
+
+    <div class="thumbs" aria-label="Miniaturas">
+      <button class="thumb" data-slide="0"><img src="img/moto1.jpg" alt="Miniatura 1"></button>
+      <button class="thumb" data-slide="1"><img src="img/moto2.jpg" alt="Miniatura 2"></button>
+      <button class="thumb" data-slide="2"><img src="img/moto3.jpg" alt="Miniatura 3"></button>
+    </div>
+  </main>
+
+  <section class="cta">
+    <a class="btn-whatsapp" 
+       href="https://wa.me/558141062756?text=Ol%C3%A1%20Paiva%20Motos%2C%20quero%20mais%20informa%C3%A7%C3%B5es." 
+       target="_blank" rel="noopener">
+      <span>📲 Informações? Fale no WhatsApp</span>
+    </a>
+    <p class="info">Clique no botão para falar com a Paiva Motos. Atendimento rápido e direto.</p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Paiva Motos — Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const thumbs = Array.from(document.querySelectorAll('.thumb'));
+    let index = 0, timer;
+    function showSlide(i) {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[i].classList.add('active');
+      index = i;
+    }
+    function startAutoRotate() {
+      stopAutoRotate();
+      timer = setInterval(() => {
+        const next = (index + 1) % slides.length;
+        showSlide(next);
+      }, 3500);
+    }
+    function stopAutoRotate() { if (timer) clearInterval(timer); }
+    thumbs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        stopAutoRotate();
+        showSlide(Number(btn.dataset.slide));
+      });
+    });
+    startAutoRotate();
+  </script>
+</body>
+</html>
