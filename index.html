@@ -147,6 +147,11 @@
       border-top: 1px solid #1f3b66;
       margin-top: 16px;
     }
+    footer .endereco {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
@@ -204,6 +209,9 @@
 
   <footer>
     © <span id="year"></span> Paiva Motos — Todos os direitos reservados.
+    <div class="endereco">
+      📍 Avenida Governador Agamenon Magalhães, 215 - Cavaleiro / Jaboatão dos Guararapes
+    </div>
   </footer>
 
   <script>
@@ -227,10 +235,4 @@
     thumbs.forEach(btn => {
       btn.addEventListener('click', () => {
         stopAutoRotate();
-        showSlide(Number(btn.dataset.slide));
-      });
-    });
-    startAutoRotate();
-  </script>
-</body>
-</html>
+        showSlide(Number(btn.dataset.slide
